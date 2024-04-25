@@ -91,9 +91,6 @@ def initialize_ray_cluster(
         gpu_bundles = 0
         for bundle in bundles:
             bundle_gpus = bundle.get("GPU", 0)
-            if bundle_gpus > 1:
-                raise ValueError(
-                    "Placement group bundle cannot have more than 1 GPU.")
             if bundle_gpus:
                 gpu_bundles += 1
         if parallel_config.world_size > gpu_bundles:
